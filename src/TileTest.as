@@ -1,10 +1,13 @@
 package
 {
 	import mx.core.ButtonAsset;
+	import net.flashpunk.FP;
 	import net.flashpunk.World;
+	import TileGenerationTest.RandomMap;
 	import TileGenerationTest.TileGraphic;
 	import TileGenerationTest.Tile;
 	import TileGenerationTest.TileGrow;
+	import TileGenerationTest.WorldMap;
 	import UI.Button;
 	import TileGenerationTest.TileAssets
 	
@@ -23,6 +26,7 @@ package
 		
 		private var Tilething:Tile;
 		
+		protected var Map:WorldMap;
 		override public function begin():void
 		{
 			super.begin()
@@ -32,25 +36,19 @@ package
 			   add (new TileGrow(350, 200, true,"",GrowTile,10));
 			   add(new TileGrow(350, 400, false,"",GrowTile,-10));
 			 */
-			var Xpos:Number;
-			var Ypox:Number;
-			var Xstart:Number = 300;
-			var Ystart:Number = 200;
-			for (var i:int = 0; i < 8; i++)
-			{
-				for (var j:int = 0; j < 8; j++)
-				{
-					
-					var stuff:Tile = new Tile(Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i, new TileGraphic(((Math.random() * 50) + 42), TileAssets.GRASSTILE_img, TileAssets.GRASSTILEINFO));
-					
-					if (j == 6 || i == 6)
-						stuff = new Tile(Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i, new TileGraphic(-1, TileAssets.WATER, TileAssets.WATERINFO));
-					
-					add(stuff);
-				}
-			}
-		
+			   Map=new WorldMap()
+			add(Map);
+			add(new Button(10,10,"",RedrawMap,null,Assets.RESET_BUTTON))
 		}
+		
+		private function RedrawMap():void {
+			remove(Map)
+			   Map=new RandomMap()
+			add(Map);
+		}
+		
+		
+		
 		
 		public function GrowTile(amount:Number):void
 		{
@@ -59,6 +57,19 @@ package
 				Tilething.size += amount;
 			}
 		}
+		
+	/*	override public function update():void {
+			super.update();
+			
+			if (mouseX >= FP.stage.width+camera.x -100) {
+				camera.x += 5;
+			}
+			else if(mouseX <= camera.x +100) {
+				camera.x += -5;
+			}
+			
+		}
+	*/	
 	
 	}
 
