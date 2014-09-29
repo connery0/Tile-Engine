@@ -35,7 +35,7 @@ package TileGenerationTest
 			}
 			else
 			{
-				sprite = TileAssets.GRASSTILE_img;
+				sprite = TileAssets.GRASS;
 			}
 			
 			if (TileMeasurements != null)
@@ -125,7 +125,7 @@ package TileGenerationTest
 			createBuffer();
 			updateBuffer();
 			
-			y = -tileHeight;
+			y = -tileHeight-topHeight-botttomHeight;
 		}
 	
 	}

@@ -22,7 +22,7 @@ package TileGenerationTest
 				for (var j:int = 0; j < 8; j++)
 				{
 					
-					var stuff:Tile = new Tile(new TileGraphic(((Math.random() * 50) + 42), TileAssets.GRASSTILE_img, TileAssets.GRASSTILEINFO),Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i);
+					var stuff:Tile = new Tile(new TileGraphic(((Math.random() * 50) + 42), TileAssets.GRASS, TileAssets.GRASSINFO),Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i);
 					
 					if (j == 6 || i == 6)
 						stuff = new Tile(new TileGraphic(-1, TileAssets.WATER, TileAssets.WATERINFO),Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i);

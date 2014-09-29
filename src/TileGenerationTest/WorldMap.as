@@ -43,7 +43,7 @@ package TileGenerationTest
 					
 					
 					CurrentTile.x = 300 + 45 * j - 44 * i;
-					CurrentTile.y = 200 + 23 * j + 22 * i;
+					CurrentTile.y = 300 + 23 * j + 22 * i;
 					add(CurrentTile);
 				}
 			}
@@ -79,18 +79,21 @@ package TileGenerationTest
 			var returnTile:Tile = null
 			var returnTileGraphic:TileGraphic = null;
 			
-			switch (Name)
+			/*switch (Name)
 			{
 				case "Grass":
 					returnTileGraphic = new TileGraphic(height, TileAssets.GRASSTILE_img, TileAssets.GRASSTILEINFO);
 					break;
 				case "Water":
 					returnTileGraphic = new TileGraphic(height,TileAssets.WATER,TileAssets.WATERINFO);
+					break;								
+				case "Pillar":
+					returnTileGraphic = new TileGraphic(height,TileAssets["PILLAR"],TileAssets["PILLAR"+"INFO"]);
 					break;
 				default: 
-			}
+			}*/
 			
-			
+			returnTileGraphic = new TileGraphic(height,TileAssets[Name],TileAssets[Name+"INFO"]);
 			
 			
 			returnTile = new Tile(returnTileGraphic, X, Y);

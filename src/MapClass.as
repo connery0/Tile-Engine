@@ -8,13 +8,13 @@ package
 	{
 		
 		public static const Map1:Array = [	
-		[["Grass",150,"monsterslot"], ["Grass", 90], ["Grass", 70], ["Grass", -1], ["Grass", 60], ["Grass", 50], ["Grass", -1]],
-		[["Grass", 130], ["Grass", 70], ["Water", -1], ["Water", -1], ["Grass", -1], ["Grass", 50], ["Grass", -1]],
-		[["Grass", 90], ["Grass", -1], ["Water", -1], ["Water", -1], ["Water", -1], ["Grass", 70], ["Grass", -1]],
-		[["Grass", 90], ["Grass", -1], ["Water", -1], ["Water", -1], ["Water", -1], ["Grass", 70], ["Grass", -1]],
-		[["Grass", 90], ["Grass", -1], ["Water", -1], ["Water", -1], ["Water", -1], ["Grass", 70], ["Grass", -1]],
-		[["Grass", 90], ["Grass", -1], ["Water", -1], ["Water", -1], ["Water", -1], ["Grass", 70], ["Grass", -1]],					
-		[["Grass", 30], ["Grass", 40], ["Grass", -1], ["Water",-1], ["Water", -1], ["Grass", 70], ["Grass", -1]]];
+		[["GRASS",150,"monsterslot"], ["GRASS", 90], ["GRASS", 70], ["GRASS", -1], ["GRASS", 60], ["GRASS", 50], ["GRASS", -1]],
+		[["GRASS", 130], ["GRASS", 70], ["WATER", -1], ["WATER", -1], ["GRASS", -1], ["GRASS", 50], ["GRASS", -1]],
+		[["GRASS", 90], ["GRASS", -1], ["WATER", -1], ["WATER", -1], ["WATER", -1], ["GRASS", 70], ["GRASS", -1]],
+		[["GRASS", 90], ["GRASS", -1], ["WATER", -1], ["PILLAR", -1], ["WATER", -1], ["GRASS", 70], ["GRASS", -1]],
+		[["GRASS", 90], ["GRASS", -1], ["WATER", -1], ["WATER", -1], ["WATER", -1], ["GRASS", 70], ["GRASS", -1]],
+		[["GRASS", 90], ["GRASS", -1], ["WATER", -1], ["WATER", -1], ["WATER", -1], ["GRASS", 70], ["PILLAR", 100]],					
+		[["GRASS", 30], ["GRASS", 40], ["GRASS", -1], ["WATER",-1], ["WATER", -1], ["PILLAR", 70], ["PILLAR", -1]]];
 												
 		
 		
