@@ -23,13 +23,10 @@ package TileGenerationTest
 		
 		protected static var ActiveTile:Tile = null;
 		
-		public function Tile( TileImage:TileGraphic = null,x:Number = 0, y:Number = 0)
+		public function Tile(x:Number = 0, y:Number = 0, TileImage:TileGraphic = null)
 		{
 			
 			super(x, y);
-			if (TileImage == null) {
-				TileImage=new TileGraphic()
-			}
 			if (TileImage != null)
 			{
 				TileSprite = TileImage

@@ -18,7 +18,7 @@ package UI
 		protected var normal:Graphic;
 		protected var hover:Graphic;
 		protected var down:Graphic;
-		
+
 		protected var clicked:Boolean = false;
 		
 		protected var label:Text;
@@ -31,39 +31,33 @@ package UI
 		/*-----------------------------------------
 		 *-------------REALY USEFULL---------------
 		 * ----------------------------------------
-		 *
+		 * 
 		 * What we are going to do instead is, ask for an optional parameter Object.
 		 * As it will be an object, it can be an int, a String, a custom class, even an array to contain multiple params...
 		 * or an Object itself, in this syntax: {param: "value", param2: 1, param3: false}.
 		 * This way, we can have multiple parameters which can be retrieved like this: object.param, object.param2, etc.
 		 */
 		
-		public function Button(x:Number = 0, y:Number = 0, text:String = "", callback:Function = null, params:Object = null, SourceImg:Class = null)
+		
+		public function Button(x:Number = 0, y:Number = 0, text:String = "", callback:Function = null, params:Object = null)
 		{
 			super(x, y);
 			
-			this.params = params
+			this.params=params
 			this.callback = callback;
 			
-			if (SourceImg == null)	{
-				var normalStamp:Stamp = new Stamp(Assets.BUTTON);
-				
-				label = new Text(text, 10, 0, {size: 16, color: 0x000000, width: normalStamp.width - 30, wordWrap: true, align: "center"});
-				label.y = (normalStamp.height - label.textHeight) * 0.5;
-				
-				normal = normalStamp;
-				hover = new Stamp(Assets.BUTTON_HOVER);
-				down = new Stamp(Assets.BUTTON_DOWN);
-			}
-			else
-			{
-				var normalStamp:Stamp = new Stamp(SourceImg)
-				normal = hover = down = normalStamp;
-			}
+			var normalStamp:Stamp = new Stamp(Assets.BUTTON);
+			
+			label = new Text(text, 10, 0, {size: 16, color: 0x000000, width: normalStamp.width - 30, wordWrap: true, align: "center"});
+			label.y = (normalStamp.height - label.textHeight) * 0.5;
+			
+			normal = normalStamp;
+			hover = new Stamp(Assets.BUTTON_HOVER);
+			down = new Stamp(Assets.BUTTON_DOWN);
 			
 			graphic = normal;
 			
-			setHitboxTo(normal);
+			setHitboxTo(normalStamp);
 		}
 		
 		override public function update():void
@@ -99,13 +93,11 @@ package UI
 		{
 			if (callback != null)
 			{
-				if (params != null)
-				{
-					callback(params);
+				if (params != null) {
+				 callback(params);	
 				}
-				else
-				{
-					callback();
+				else{
+				callback();
 				}
 			}
 		}
