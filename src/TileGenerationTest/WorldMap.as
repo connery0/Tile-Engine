@@ -68,6 +68,7 @@ package TileGenerationTest
 					world.remove(i[j]);
 				}
 			}
+			
 			super.removed();
 		
 		}
@@ -78,7 +79,7 @@ package TileGenerationTest
 			
 			var returnTile:Tile = null
 			var returnTileGraphic:TileGraphic = null;
-			
+				
 			/*switch (Name)
 			{
 				case "Grass":
@@ -94,6 +95,8 @@ package TileGenerationTest
 			}*/
 			
 			returnTileGraphic = new TileGraphic(height,TileAssets[Name],TileAssets[Name+"INFO"]);
+			
+			
 			
 			
 			returnTile = new Tile(returnTileGraphic, X, Y);

@@ -23,18 +23,21 @@ package TileGenerationTest
 		
 		protected static var ActiveTile:Tile = null;
 		
-		public function Tile(x:Number = 0, y:Number = 0, TileImage:TileGraphic = null)
+		public function Tile( TileImage:TileGraphic = null,x:Number = 0, y:Number = 0)
 		{
 			
 			super(x, y);
+			if (TileImage == null) {
+				TileImage=new TileGraphic()
+			}
 			if (TileImage != null)
 			{
 				TileSprite = TileImage
 				graphic = TileSprite;
-				ActiveOverlay.y = -TileSprite.size;
+				ActiveOverlay.y = -TileSprite.fullsize;
 				//setHitboxTo(ActiveOverlay);
 				ActiveOverlay.visible = false;
-				mask = new Pixelmask(TileAssets.ACTIVETILE, 0, -TileSprite.size)
+				mask = new Pixelmask(TileAssets.ACTIVETILE, 0, -TileSprite.fullsize)
 			}
 		}
 		
