@@ -26,6 +26,8 @@ package TileGenerationTest
 		protected var sprite:Class;
 		protected var sourceBitmapData:BitmapData;
 		
+		public var ExtraHeight:Number;
+		
 		public function TileGraphic(Height:Number = -1, TileSprite:Class = null, TileMeasurements:Object = null)
 		{
 			
@@ -55,9 +57,13 @@ package TileGenerationTest
 			sourceBitmapData = _source;
 			_height = Height;
 			size = Height;
+			ExtraHeight = topHeight + botttomHeight;
 		
 		}
 		
+		public function get fullsize():Number {
+		return _height + ExtraHeight;	
+		}
 		
 		public function get size():Number
 		{

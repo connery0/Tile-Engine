@@ -34,10 +34,10 @@ package TileGenerationTest
 			{
 				TileSprite = TileImage
 				graphic = TileSprite;
-				ActiveOverlay.y = -TileSprite.size;
+				ActiveOverlay.y = -TileSprite.fullsize;
 				//setHitboxTo(ActiveOverlay);
 				ActiveOverlay.visible = false;
-				mask = new Pixelmask(TileAssets.ACTIVETILE, 0, -TileSprite.size)
+				mask = new Pixelmask(TileAssets.ACTIVETILE, 0, -TileSprite.fullsize)
 			}
 		}
 		
