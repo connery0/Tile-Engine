@@ -1,5 +1,7 @@
-package TileGenerationTest 
+package TileGenerationTest
 {
+	import net.flashpunk.Entity;
+	import net.flashpunk.FP;
 	import net.flashpunk.Graphic;
 	import net.flashpunk.Mask;
 	
@@ -7,32 +9,96 @@ package TileGenerationTest
 	 * ...
 	 * @author ...
 	 */
-	public class RandomMap extends WorldMap 
+	public class RandomMap extends WorldMap
 	{
 		
-		public function RandomMap(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null) 
+		public function RandomMap()
 		{
-			super(x, y, graphic, mask);
-			var Xpos:Number;
-			var Ypox:Number;
-			var Xstart:Number = 300;
-			var Ystart:Number = 200;
-			for (var i:int = 0; i < 8; i++)
+			var RandMap:Array = [];
+			
+			for (var i:int = 0; i < 10; i++)
 			{
-				for (var j:int = 0; j < 8; j++)
+				RandMap.push([]);
+				for (var j:int = 0; j < 10; j++)
 				{
+					var tileType:String;
+					switch (FP.rand(5))
+					{
+						case 0: 
+							if (j > 0)
+							{								
+								RandMap[i].push(["GRASS", RandMap[i][j-1][1] + FP.rand(50) - 25]);
+							}
+							else
+							{
+								if (i > 0) {
+									
+								RandMap[i].push(["GRASS", RandMap[i-1][j][1] + FP.rand(50) - 25]);
+								}else
+								RandMap[i].push(["GRASS", FP.rand(100) + 50]);
+							}
+							break;
+						case 1: 
+									if (j > 0)
+							{								
+								RandMap[i].push(["GRASS", RandMap[i][j-1][1] + FP.rand(50) - 25]);
+							}
+							else
+							{
+								if (i > 0) {
+									
+								RandMap[i].push(["GRASS", RandMap[i-1][j][1] + FP.rand(50) - 25]);
+								}else
+								RandMap[i].push(["GRASS", FP.rand(100) + 50]);
+							}
+							break;
+						case 2: 
+									if (j > 0)
+							{								
+								RandMap[i].push(["GRASS", RandMap[i][j-1][1] + FP.rand(50) - 25]);
+							}
+							else
+							{
+								if (i > 0) {
+									
+								RandMap[i].push(["GRASS", RandMap[i-1][j][1] + FP.rand(50) - 25]);
+								}else
+								RandMap[i].push(["GRASS", FP.rand(100) + 50]);
+							}
+							break;
+						
+						case 3: 
+							RandMap[i].push(["WATER", -1]);
+							if (j < 9)
+							{
+								
+								RandMap[i].push(["WATER", -1]);
+								j++;
+							}
+							break;
+						
+						case 4: 
+									if (j > 0)
+							{								
+								RandMap[i].push(["PILLAR", RandMap[i][j-1][1] + FP.rand(50) - 25]);
+							}
+							else
+							{
+								if (i > 0) {
+									
+								RandMap[i].push(["PILLAR", RandMap[i-1][j][1] + FP.rand(50) - 25]);
+								}else
+								RandMap[i].push(["PILLAR", FP.rand(100) + 50]);
+							}
+							break;
 					
-					var stuff:Tile = new Tile(new TileGraphic(((Math.random() * 50) + 42), TileAssets.GRASS, TileAssets.GRASSINFO),Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i);
-					
-					if (j == 6 || i == 6)
-						stuff = new Tile(new TileGraphic(-1, TileAssets.WATER, TileAssets.WATERINFO),Xstart + 45 * j - 44 * i, Ystart + 23 * j + 22 * i);
-					
-					add(stuff);
+					}
 				}
 			}
+			super(RandMap);
+		
 		}
-		
-		
+	
 	}
 
 }

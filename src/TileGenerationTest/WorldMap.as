@@ -1,9 +1,12 @@
 package TileGenerationTest
 {
+	import AssetFolder.TileAssets;
+	import Entity.Character;
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.Graphic;
 	import net.flashpunk.Mask;
+	import Tiles.*;
 	
 	/**
 	 * ...
@@ -12,45 +15,75 @@ package TileGenerationTest
 	public class WorldMap extends Entity
 	{
 		
-		protected var Map:Array;
+		protected var Currentmap:Array;
 		
-		public function WorldMap(x:Number = 0, y:Number = 0, graphic:Graphic = null, mask:Mask = null)
+		public function WorldMap(LoadMap:Array = null)
 		{
-			Map = MapClass.Map1;
-			super(x, y, graphic, mask);
-			for (var i:int = 0; i < Map.length; i++)
+			super();
+			Currentmap = [];
+			if (LoadMap != null)
 			{
-				for (var j:int = 0; j < Map[i].length; j++)
-				{	
-					
-					var CurrentTile:Tile;
-					if (Map[i][j].length == 1) {
-					CurrentTile = TileSwitch( Map[i][j][0]);
-					}
-					if (Map[i][j].length == 2) {
+				for (var i:int = 0; i < LoadMap.length; i++)
+				{
+					Currentmap.push([]);
+					for (var j:int = 0; j < LoadMap[i].length; j++)
+					{
 						
-					CurrentTile = TileSwitch( Map[i][j][0], Map[i][j][1]);
-					}
-					if (Map[i][j].length == 3 ) {
+						var CurrentTile:Tile;
 						
-					CurrentTile = TileSwitch( Map[i][j][0], Map[i][j][1]);
-					}
-					
-					if (Map[i][j].length == 5) {
+						CurrentTile = GenerateTile(LoadMap[i][j]);
 						
-					CurrentTile = TileSwitch( Map[i][j][0], Map[i][j][1],Map[i][j][3], Map[i][j][4]);
+						CurrentTile.x += 345 + 45 * j - 44 * i;
+						CurrentTile.y += 300 + 23 * j + 22 * i;
+						add(CurrentTile);
+						
+						Currentmap[i].push(CurrentTile);
 					}
-					
-					
-					CurrentTile.x = 300 + 45 * j - 44 * i;
-					CurrentTile.y = 300 + 23 * j + 22 * i;
-					add(CurrentTile);
 				}
-			}
-		
+			}		
+			add(new Character(Currentmap[2][1]));
+			var a:Tile = Currentmap[2][1];
+			a.ActiveOverlay.visible = true;
 		}
 		
-		public function add(ToAdd:Entity):void
+		override public function added():void 
+		{
+			/* add monsters? add base */
+			
+			super.added();
+		}
+		
+		protected function GenerateTile(Arguments:Array):Tile
+		{
+			var Name:String = Arguments[0];
+			var height:Number = -1;
+			var xPos:Number = 0;
+			var yPos:Number = 0;
+			
+			for (var i:int = 0; i < Arguments.length; i++)
+			{
+				if (i == 1)
+					height = Arguments[i];
+				
+					/* MONSTER CODE */
+				if (i == 2)
+					trace(Arguments[i]);
+				
+				if (i == 3)
+					trace(Arguments[i]);
+			}
+			
+			var returnTile:Tile = null
+			var returnTileGraphic:TileGraphic = null;
+			
+			returnTileGraphic = new TileGraphic(height, TileAssets[Name], TileAssets[Name + "INFO"]);
+			
+			returnTile = new Tile(returnTileGraphic, xPos, yPos);
+			return returnTile;
+			
+		}
+		
+		protected function add(ToAdd:Entity):void
 		{
 			FP.world.add(ToAdd);
 		}
@@ -68,40 +101,21 @@ package TileGenerationTest
 					world.remove(i[j]);
 				}
 			}
+			world.getClass(Character,i);
+			if (i != null)
+			{
+				for (j= 0; j < i.length; j++)
+				{
+					temp = i[j];
+					world.remove(i[j]);
+				}
+			}
 			
 			super.removed();
 		
 		}
-		;
 		
-		protected function TileSwitch(Name:String, height:Number = -1, X:Number = 0, Y:Number = 0):Tile
-		{
-			
-			var returnTile:Tile = null
-			var returnTileGraphic:TileGraphic = null;
-				
-			/*switch (Name)
-			{
-				case "Grass":
-					returnTileGraphic = new TileGraphic(height, TileAssets.GRASSTILE_img, TileAssets.GRASSTILEINFO);
-					break;
-				case "Water":
-					returnTileGraphic = new TileGraphic(height,TileAssets.WATER,TileAssets.WATERINFO);
-					break;								
-				case "Pillar":
-					returnTileGraphic = new TileGraphic(height,TileAssets["PILLAR"],TileAssets["PILLAR"+"INFO"]);
-					break;
-				default: 
-			}*/
-			
-			returnTileGraphic = new TileGraphic(height,TileAssets[Name],TileAssets[Name+"INFO"]);
-			
-			
-			
-			
-			returnTile = new Tile(returnTileGraphic, X, Y);
-			return returnTile;
-		}
+		
 	
 	}
 

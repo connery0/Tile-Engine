@@ -45,8 +45,10 @@ package UI
 			this.params = params
 			this.callback = callback;
 			
+			var normalStamp:Stamp;
+			
 			if (SourceImg == null)	{
-				var normalStamp:Stamp = new Stamp(Assets.BUTTON);
+				normalStamp= new Stamp(Assets.BUTTON);
 				
 				label = new Text(text, 10, 0, {size: 16, color: 0x000000, width: normalStamp.width - 30, wordWrap: true, align: "center"});
 				label.y = (normalStamp.height - label.textHeight) * 0.5;
@@ -57,7 +59,7 @@ package UI
 			}
 			else
 			{
-				var normalStamp:Stamp = new Stamp(SourceImg)
+				normalStamp = new Stamp(SourceImg)
 				normal = hover = down = normalStamp;
 			}
 			

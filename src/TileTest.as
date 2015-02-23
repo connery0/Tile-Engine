@@ -1,15 +1,17 @@
 package
 {
 	import mx.core.ButtonAsset;
+	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
+	import net.flashpunk.graphics.Stamp;
 	import net.flashpunk.World;
 	import TileGenerationTest.RandomMap;
-	import TileGenerationTest.TileGraphic;
-	import TileGenerationTest.Tile;
-	import TileGenerationTest.TileGrow;
+	import Tiles.TileGraphic;
+	import Tiles.Tile;
+	import Tiles.TileGrow;
 	import TileGenerationTest.WorldMap;
 	import UI.Button;
-	import TileGenerationTest.TileAssets
+	import AssetFolder.TileAssets
 	
 	/**
 	 * ...
@@ -36,14 +38,19 @@ package
 			   add (new TileGrow(350, 200, true,"",GrowTile,10));
 			   add(new TileGrow(350, 400, false,"",GrowTile,-10));
 			 */
-			   Map=new WorldMap()
+			   Map=new WorldMap(MapClass.Map1)
 			add(Map);
-			add(new Button(10,10,"",RedrawMap,null,Assets.RESET_BUTTON))
+			add(new Button(10, 10, "", RedrawMap, null, Assets.RESET_BUTTON))
+			
+			
+			
+			
 		}
 		
 		private function RedrawMap():void {
 			remove(Map)
-			   Map=new RandomMap()
+			Map = null;
+			Map=new RandomMap()
 			add(Map);
 		}
 		
@@ -56,6 +63,13 @@ package
 			{
 				Tilething.size += amount;
 			}
+		}
+		
+		
+		override public function update():void 
+		{
+			super.update();
+
 		}
 		
 	/*	override public function update():void {

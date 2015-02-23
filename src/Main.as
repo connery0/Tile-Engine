@@ -14,12 +14,15 @@ package
 		
 		public function Main() 
 		{
-			super(700, 700, 60,false);
+			super(700, 700, 60, false);
+			FP.console.enable();
 		}
 		
 		override public function init():void {
 			FP.world = new TileTest();
 		}
+		
+		
 		
 		
 	}
